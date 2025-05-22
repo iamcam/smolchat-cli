@@ -1,0 +1,7 @@
+smolagents[telemetry,toolkit,litellm]
+opentelemetry-sdk
+opentelemetry-exporter-otlp
+openinference-instrumentation-smolagents
+litellm
+arize-otel
+arize-phoenix-otel

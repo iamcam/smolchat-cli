@@ -1,9 +1,7 @@
 import os
 
-# from arize.otel import register
 from dotenv import load_dotenv
 from openinference.instrumentation.smolagents import SmolagentsInstrumentor
-# from phoenix.otel import register
 from smolagents import (CodeAgent, InferenceClientModel, LiteLLMModel,
                         ToolCallingAgent, VisitWebpageTool, WebSearchTool)
 
@@ -16,7 +14,6 @@ load_dotenv()
 LLM_API_TOKEN = os.getenv('LLM_API_TOKEN')
 MODEL_ID = os.getenv('MODEL_ID')
 LLM_API_BASE = os.getenv('LLM_API_BASE')
-# os.environ["OTEL_EXPORTER_OTLP_HEADERS"] = f"api_key={os.getenv('PHOENIX_API_KEY')}"
 
 PHOENIX_COLLECTOR_ENDPOINT = os.getenv('PHOENIX_COLLECTOR_ENDPOINT')
 
@@ -53,16 +50,9 @@ elif PHOENIX_COLLECTOR_ENDPOINT and ":6006" in PHOENIX_COLLECTOR_ENDPOINT:
       auto_instrument=True
     )
 
-
-# if tracer_provider is not None:
-#     SmolagentsInstrumentor().instrument(tracer_provider=tracer_provider)
-
-
 ######
 
 model = LiteLLMModel(model_id=MODEL_ID, api_base=LLM_API_BASE, api_key=LLM_API_TOKEN) # Could use 'gpt-4o'
-# model = LiteLLMModel(model_id=MODEL_ID, api_key=LLM_API_TOKEN) # Could use 'gpt-4o'
-
 
 web_agent = ToolCallingAgent(
     tools=[WebSearchTool(), visit_webpage],

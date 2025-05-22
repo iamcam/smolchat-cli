@@ -67,7 +67,7 @@ model = LiteLLMModel(model_id=MODEL_ID, api_base=LLM_API_BASE, api_key=LLM_API_T
 web_agent = ToolCallingAgent(
     tools=[WebSearchTool(), visit_webpage],
     model=model,
-    max_steps=1,
+    max_steps=10,
     name="web_search_agent",
     description="Runs web searches for you."
 )
